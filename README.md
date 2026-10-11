@@ -12,16 +12,17 @@
 | `day04/` | 多轮聊天助手（理解 `messages`） | `day04_chat.py` |
 | `day05/` | 持久记忆（存到硬盘） | `day05_chat.py` |
 | `day06/` | 上下文管理（裁剪历史） | `day06_chat.py` |
-| `ollama/` | **支线**：本地模型（Ollama）—— 不花钱、不联网 | `ollama_chat.py`（一键启动脚本待做） |
+| `day07/` | 流式输出与首段等待 | `day07_stream.py` |
+| `资料库/` | 项目学习进度与换电脑指南 | Markdown 文档 |
+| `ollama/` | **支线**：本地模型（Ollama）—— 不花钱、不联网 | `ollama_chat.py`、`start_ollama.ps1`、`stop_ollama.ps1` |
 
 ## 怎么运行
 
 在 VS Code 里打开某个文件，按右上角 **▶（运行 Python 文件）** 即可。
 
-或者在终端里（注意现在多了一层文件夹）：
+在仓库根目录打开终端后运行：
 
 ```powershell
-cd C:\Users\admin\Desktop\AI-30Days
 python day04\day04_chat.py
 ```
 
@@ -32,7 +33,7 @@ python day04\day04_chat.py
 
 | 项 | 值 |
 | --- | --- |
-| Python | `D:\python\python.exe`（3.13.16） |
+| Python | 3.13（当前验证版本：3.13.16） |
 | 依赖 | `openai` |
 | 模型 | DeepSeek `deepseek-flash`（OpenAI 兼容格式） |
 | Key | 存在 Windows 环境变量 `DEEPSEEK_API_KEY`，**代码里不出现明文** |
@@ -58,5 +59,9 @@ python day04\day04_chat.py
 
 ## 下一步
 
-- Day 07：摘要式记忆（把旧对话压缩成一句话塞进 `system`）
-- 之后：RAG 知识库 → AI Agent → 作品集
+- 当前：day07 流式输出；先复习 `for` 循环与缩进，再继续理解流式片段和迭代器
+- 之后：AI 助手项目 → RAG 知识库 → AI Agent → 作品集
+
+## 项目资料库
+
+可迁移的学习进度摘要和换电脑指南见 [`资料库/`](资料库/README.md)。
