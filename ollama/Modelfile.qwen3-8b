@@ -1,0 +1,30 @@
+# 本地模型 Modelfile（Qwen3-8B Q4_K_M）
+# ============================================================
+# 用途：重建 qwen3-8b:latest，给它【更大的上下文】+【默认关掉思考模式】
+#
+# 用法（先双击桌面「启动本地模型」，然后在 AI-30Days\ollama\ 目录下）：
+#     ollama create qwen3-8b -f Modelfile.qwen3-8b
+#
+# 为什么要重建：
+#   1. 原来那个自建模型只设了 num_ctx=8192（8K）
+#      而 DSH 是智能体：系统提示词 + 工具定义 + 历史，很容易超过 8K
+#      → 表现是报错、或者答非所问
+#   2. 思考模式没关。Qwen3 默认会"想很久"，简单问答能烧 231 个 token（关了只要 6 个）
+#
+# 参数说明：
+#   num_ctx 16384    —— 16K 上下文（KV 缓存约占 2~3GB 显存 + 模型 4.7GB）
+#                       显存够（先关掉游戏）可以调到 32768，KV 会涨到约 5GB
+#   temperature 0.6  —— 沿用原来的设置
+#   SYSTEM /no_think —— Qwen3 的"关闭思考模式"开关
+#                       想恢复思考模式：把下面 SYSTEM 那行删掉（或前面加 #）再 create
+#
+# 注意：FROM 用的是原始 GGUF 文件，它还在（幸好没删）。
+#       重建会复用已有的 blob，不会重复占磁盘，很快。
+# ============================================================
+
+FROM D:\OllamaModels\gguf\Qwen3-8B-Q4_K_M.gguf
+
+PARAMETER num_ctx 16384
+PARAMETER temperature 0.6
+
+SYSTEM /no_think
